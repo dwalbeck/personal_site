@@ -26,7 +26,7 @@ jobs:
         run: npm run build
 
       - name: copy files to web server
-        uses: Hermanverschooten/scp-deploy@v1.0.7
+        uses: cross-the-world/scp-pipeline@master
         with:
           host: 54.237.75.43
           user: deploy
