@@ -29,7 +29,6 @@ describe('Header', () => {
 
   it('mobile menu is hidden by default', () => {
     render(<Header />);
-    const mobileMenu = screen.queryByRole('list', { hidden: true });
     // The mobile menu should not be visible initially
     const button = screen.getByRole('button', { name: /toggle navigation/i });
     expect(button).toHaveAttribute('aria-expanded', 'false');

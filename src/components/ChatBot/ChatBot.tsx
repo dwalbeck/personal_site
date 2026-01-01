@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import config from '../../config/env';
 
 const ChatBot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,12 +26,12 @@ const ChatBot: React.FC = () => {
 
   const sendMessage = async () => {
     if (message.trim() === '') return;
-    
+
     setLoading(true);
     setChatLog((prevLog) => [...prevLog, { sender: 'You', text: message }]);
 
     try {
-      const response = await axios.post('http://localhost:8000/chat/', {
+      const response = await axios.post(`${config.apiUrl}/chat/`, {
         query: message,
       });
 

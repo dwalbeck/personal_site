@@ -1,5 +1,7 @@
 # Portfolio Website / CV
 
+git clone https://github.com/sam-harri/CurriculumVitae.git
+
 This is a personal portfolio website and CV built using **React**, **Tailwind CSS**, and **TypeScript**. The site is designed to showcase your projects, skills, and professional experience in a clean, modern layout.
 
 ## Tech Stack

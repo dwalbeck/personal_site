@@ -8,7 +8,7 @@ const MeetDavey: React.FC = () => {
                     <h1 className="text-2xl font-light mb-0 text-white pb-14 w-full justify-center">Meet Davey</h1>
                     <div className="container w-full">
                         <video controls>
-                            <source type="video/mp4" src="http://localhost/davey_walbeck-video.mp4" />
+                            <source type="video/mp4" src="/davey_walbeck-video.mp4" />
                         </video>
                     </div>
                 </div>

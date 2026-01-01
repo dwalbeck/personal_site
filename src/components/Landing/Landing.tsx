@@ -1,11 +1,12 @@
 import React from 'react';
+import config from '../../config/env';
 
 const Landing: React.FC = () => {
   return (
     <div>
       <div id="home" className="container mx-auto first-section py-5 xl:px-40">
         <div className="flex flex-col md:flex-row justify-start items-start pt-5 xl:space-x-16 flex-nowrap">
-          
+
           {/* Profile Section */}
           <div className="w-full md:w-1/3 lg:w-1/4 flex-shrink-0 text-center profile-section mb-10 sm:mb-0 mr-4">
             <img
@@ -20,17 +21,17 @@ const Landing: React.FC = () => {
               Draper, UT
             </p>
             <div className="mt-4">
-              <a href="https://github.com/dwalbeck/" className="text-2xl mx-2 text-gray-600 hover:text-gray-600">
+              <a href={config.social.github} className="text-2xl mx-2 text-gray-600 hover:text-gray-600">
                 <i className="fab fa-github hover:scale-110"></i>
               </a>
               <a
-                href="https://www.linkedin.com/in/daveywalbeck/"
+                href={config.social.linkedin}
                 className="text-2xl mx-2 text-gray-600 hover:text-gray-600"
               >
                 <i className="fab fa-linkedin hover:scale-110"></i>
               </a>
               <a
-                href="/resume-davey_walbeck.docx" // add your CV file to the public folder
+                href={config.files.resume} // add your CV file to the public folder
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-2xl mx-2 text-gray-600 hover:text-gray-600"
@@ -38,7 +39,7 @@ const Landing: React.FC = () => {
                 <i className="ai ai-cv hover:scale-110"></i>
               </a>
               <a
-                href="mailto:daveywalbeck@gmail.com"
+                href="mailto:{config.contact.email}"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-2xl mx-2 text-gray-600 hover:text-gray-600"
