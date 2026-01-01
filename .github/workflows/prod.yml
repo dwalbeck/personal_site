@@ -26,12 +26,13 @@ jobs:
         run: npm run build
 
       - name: copy files to web server
-        uses: moonpathbg/scp_uploader@latest
+        uses: betanzos/scp-upload@v1.1.0
         with:
           host: 54.237.75.43
           username: deploy
-          key: ${{secrets.SSH_PUBLIC_KEY}}
+          key: ${{secrets.SSH_PRIVATE_KEY}}
           port: 22
           source: './dist/*'
-          target: '/var/www/personal_site/'
+          remote_dir: '/var/www/personal_site/'
+          recursive: 'true'
 
