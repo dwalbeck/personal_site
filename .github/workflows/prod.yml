@@ -26,13 +26,13 @@ jobs:
         run: npm run build
 
       - name: copy files to web server
-        uses: appleboy/scp-action@v1
+        uses: Hermanverschooten/scp-deploy@v1.0.7
         with:
           host: 54.237.75.43
-          username: deploy
+          user: deploy
           key: ${{secrets.SSH_PRIVATE_KEY}}
           port: 22
-          source: './dist/*'
-          target: '/var/www/personal_site/'
+          local: './dist/*'
+          remote: '/var/www/personal_site/'
 
 
