@@ -26,13 +26,23 @@ jobs:
         run: npm run build
 
       - name: copy files to web server
-        uses: i3h/deploy-with-scp@v1
-        with:
-          server-ip: 54.237.75.43
-          username: deploy
-          ssh-key: ${{secrets.SSH_PRIVATE_KEY}}
+        run: |
+          echo '$SSH_KEY' > key.pem
+          scp -r -i key.pem $SRC $USER@$RHOST:$DEST
+        env:
+          SSH_KEY: ${{secrets.SSH_PRIVATE_KEY}}
+          RHOST: 54.237.75.43
+          USER: deploy
+          SRC: './dist/*'
+          DEST: '/var/www/personal_site/'
+
+#        uses: i3h/deploy-with-scp@v1
+#        with:
+#          server-ip: 54.237.75.43
+#          username: deploy
+#          ssh-key: ${{secrets.SSH_PRIVATE_KEY}}
         #  port: 22
-          src: './dist/*'
-          dest: '/var/www/personal_site/'
+#          src: './dist/*'
+#          dest: '/var/www/personal_site/'
 
 
