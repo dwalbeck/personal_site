@@ -26,7 +26,7 @@ jobs:
         run: npm run build
 
       - name: copy files to web server
-        uses: TwanLuttik/gh-action-scp@v1
+        uses: TwanLuttik/gh-action-scp@v1.0.0
         with:
           host: 54.237.75.43
           username: deploy
