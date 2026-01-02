@@ -57,3 +57,6 @@ All variables must be prefixed with `VITE_`:
 - `VITE_FILES_RESUME` - Resume file path
 
 See `env.example` for details.
+
+
+run with nginx
