@@ -1,5 +1,7 @@
 name: Personal professional website
 
+concurrency: production
+
 on:
   push:
     branches:
@@ -8,6 +10,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: production
     container: node:20
     steps:
       - uses: actions/checkout@v6.0.1
@@ -32,14 +35,13 @@ jobs:
           chmod 600 ~/.ssh/pri-key.pem
 
       - name: copy files to web server
-        uses: reene444/scp-transfer-action@v1.0.0
+        uses: appleboy/scp-action@v1
         with:
-          remote_host: "54.237.75.43"
-          remote_user: "deploy"
-          ssh-key-path: "~/.ssh/pri-key.pem"
-#          key: ${{secrets.SSH_PRIVATE_KEY}}
-#          port: "22"
-#          source: "./dist/*"
-          remote_path: "/var/www/personal_site/"
+          host: "54.237.75.43"
+          username: "deploy"
+          key: ${{secrets.SSH_PRIVATE_KEY}}
+          port: "22"
+          source: "./dist/*"
+          target: "/var/www/personal_site/"
 
 
