@@ -26,13 +26,15 @@ jobs:
         run: npm run build
 
       - name: copy files to web server
-        uses: appleboy/scp-action@v1
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
         with:
           host: "54.237.75.43"
-          username: "deploy"
-          key: "${{secrets.SSH_PRIVATE_KEY}}"
+          user: "deploy"
+          key: ${{secrets.SSH_PRIVATE_KEY}}
           port: "22"
-          source: "./dist/*"
-          target: "/var/www/personal_site/"
+          scp: |
+            './dist/*' => /var/www/personal_site/
+#          source: "./dist/*"
+#          target: "/var/www/personal_site/"
 
 
