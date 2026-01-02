@@ -28,11 +28,16 @@ jobs:
       - name: compile the code
         run: npm run build
 
-      - name: write ssh key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/pri-key.pem
-          chmod 600 ~/.ssh/pri-key.pem
+      - name: move files to backup
+        uses: fifsky/ssh-action@master
+        with:
+          command: |
+            cd /var/www/personal_site
+            rm -rf ./backup
+            mv ./dist ./backup
+          host: 54.237.75.43
+          user: deploy
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: copy files to web server
         uses: appleboy/scp-action@v1
