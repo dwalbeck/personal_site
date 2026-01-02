@@ -103,7 +103,10 @@ describe('Contact', () => {
     await user.click(submitButton);
 
     await waitFor(() => {
-      expect(mockFetch).toHaveBeenCalledWith('/api/contact', {
+      expect(mockFetch).toHaveBeenCalled();
+      const callArgs = mockFetch.mock.calls[0];
+      expect(callArgs[0]).toMatch(/\/contact\/$/);
+      expect(callArgs[1]).toEqual({
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -68,7 +68,6 @@ const Experience: React.FC = () => {
 
               {/* InContact Experience */}
               <ExperienceCard
-                  last
                   title="Principal Software Engineer"
                   company="InContact"
                   location="Sandy, UT"
@@ -84,7 +83,6 @@ const Experience: React.FC = () => {
 
               {/* Convirza Experience */}
               <ExperienceCard
-                  last
                   title="Sr. Software Engineer / Architect"
                   company="Convirza"
                   location="Draper, UT"

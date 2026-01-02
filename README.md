@@ -1,64 +1,59 @@
-# Portfolio Website / CV
+# Portfolio Frontend
 
-git clone https://github.com/sam-harri/CurriculumVitae.git
+React + TypeScript + Vite frontend application for the personal portfolio website.
 
-This is a personal portfolio website and CV built using **React**, **Tailwind CSS**, and **TypeScript**. The site is designed to showcase your projects, skills, and professional experience in a clean, modern layout.
+## Health Check Endpoint
 
-## Tech Stack
+The application provides a health check endpoint at `/health` that returns HTTP 200.
 
-- **React**
-- **TypeScript**
-- **Tailwind CSS**
+**Response:**
+```json
+{
+  "status": "ok",
+  "service": "portfolio-frontend"
+}
+```
 
-## Sections
+**Testing:**
+```bash
+# Development
+curl http://localhost:5173/health
 
-- **Landing**: 
-  - Contains a short biography, a professional headshot, and links to other websites (e.g., LinkedIn, GitHub, etc.).
-  ![Landing Section](docs/landing_desktop.png)
-  
-- **Experience**: 
-  - A vertical timeline that displays your work experience, including job titles, companies, and timeframes.
-  ![Experience Section](docs/experience_desktop.png)
+# Production
+curl http://your-domain.com/health
+```
 
-- **Skills**: 
-  - Organized into categorized columns. Uses Devicon to display technical skills with their corresponding logos (e.g., Rust, React, Docker).
-  ![Skills Section](docs/skills_desktop.png)
+The health check works in:
+- Development mode (`npm run dev`) - via Vite plugin
+- Preview mode (`npm run preview`) - via Vite plugin  
+- Production static hosting - falls back to `/health` or `/health.json` files
 
-- **Projects**: 
-  - Project cards displaying the title, description, and links to relevant websites (e.g., live project, GitHub repository, etc.).
-  ![Projects Section](docs/projects_desktop.png)
+## Quick Start
 
+```bash
+# Install dependencies
+npm install
 
+# Copy environment variables
+cp env.example .env
 
-## Using it for your own website
+# Start development server
+npm run dev
 
-### Prerequisites
+# Build for production
+npm run build
 
-Make sure you have **Node.js** and **npm** (or **yarn**) installed.
+# Run tests
+npm test
+```
 
-### Installation
+## Environment Variables
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/sam-harri/CurriculumVitae.git
-    ```
+All variables must be prefixed with `VITE_`:
+- `VITE_API_URL` - Backend API URL
+- `VITE_GITHUB_URL` - GitHub profile
+- `VITE_LINKEDIN_URL` - LinkedIn profile
+- `VITE_CONTACT_EMAIL` - Contact email
+- `VITE_FILES_RESUME` - Resume file path
 
-2. Navigate to the project directory:
-    ```bash
-    cd CurriculumVitae
-    ```
-
-3. Install dependencies:
-    ```bash
-    npm install
-    ```
-
-4. Start the development server:
-    ```bash
-    npm run dev
-    ```
-
-5. Open your browser and go to:
-    ```
-    http://localhost:5173
-    ```
+See `env.example` for details.

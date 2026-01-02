@@ -1,6 +1,33 @@
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig, loadEnv, Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 //import tailwindcss from '@tailwindcss/vite'
+
+// Custom plugin to add health check endpoint
+const healthCheckPlugin = (): Plugin => ({
+    name: 'health-check',
+    configureServer(server) {
+        server.middlewares.use((req, res, next) => {
+            if (req.url === '/health') {
+                res.statusCode = 200
+                res.setHeader('Content-Type', 'application/json')
+                res.end(JSON.stringify({ status: 'ok', service: 'portfolio-frontend' }))
+                return
+            }
+            next()
+        })
+    },
+    configurePreviewServer(server) {
+        server.middlewares.use((req, res, next) => {
+            if (req.url === '/health') {
+                res.statusCode = 200
+                res.setHeader('Content-Type', 'application/json')
+                res.end(JSON.stringify({ status: 'ok', service: 'portfolio-frontend' }))
+                return
+            }
+            next()
+        })
+    }
+})
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -10,6 +37,7 @@ export default defineConfig(({ mode }) => {
     return {
         plugins: [
             react(),
+            healthCheckPlugin(),
     //        tailwindcss()
         ],
         server: {

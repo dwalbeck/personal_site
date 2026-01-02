@@ -14,7 +14,7 @@ const ProjectList: React.FC = () => {
           {/* Blueroof360 Project */}
           <ProjectItem
             title="Blueroof360"
-            description="Complete redesign of main application"
+            description="Complete redesign of main real estate portal application and accompanying mobile app"
             websiteUrl="https://www.blueroof360.com/"
             listItems={[
                 "Evaluated current product and architect of redesigned improved modular replacement with added features and capabilities, engineered to handle scalability and the growing demands using the best suited technologies.",
@@ -29,15 +29,17 @@ const ProjectList: React.FC = () => {
           {/* GlobalBased Project */}
           <ProjectItem
             title="GlobalBased Portal"
-            description="Main company application, handling external user account, internal use, accounting, promotions, campaigns and more"
+            description="Main company portal application, handling external user account, internal use, accounting, promotions, campaigns and more"
+            websiteUrl="https://truenorthacademy.com/"
             githubUrl=""
             listItems={[
-              "Completed redesign of architecture for Lead Management Tracking System and accounting automation.",
-              "Designed new fully relational database with enforced data integrity through foreign key references and rules.",
+              "Full featured Lead Management Tracking system, complete with reporting, dynamic list generation, scoring and reminders",
+              "Database schema design handling all clients, leads, employees, accounting, reporting, ad campaigns and more",
               "Designed and implemented completely dynamic accounting system for interaction with any number of accounts, merchants, gateways, and partners for custom mapping and translation of data.",
-                "Configured and wrote code for custom interaction with an Asterisk server for all telecommunication over VoIP using soft phones and SIP channels, which improved efficiency and increased productivity and sales by 15%.",
-                "Installed and configured several servers, and handled migration of external components to operate using in-house resources. This included a PDC, several web servers, primary & secondary DNS forked public/private servers with dynamic DHCP and 3 full MTA mail servers with web accessible e-mail client for virtual sites.",
-                "Designed and coded dynamic reports and trend recognition with graphic display and downloadable exports."
+                "Deployed on prem Asterisk server and fully integrated call center into portal application with predictive dialing and call tracking, utilizing soft phones over VoIP on SIP channels and headsets",
+                "Configured and deployed several in-house servers for email, website hosting, primary and secondary DNS, dynamic DHCP for remote access and the network PDC",
+                "Generation of daily dynamic reports and trend recognition with graphic display and downloadable exports, essential of daily business operations",
+                "Multi-tier user authentication and validation system with per user and group permission setting and built-in breadcrumb and state management per session"
             ]}
           />
 
@@ -45,6 +47,7 @@ const ProjectList: React.FC = () => {
           <ProjectItem
             title="Surepay Portal"
             description="Multi-tier company application for loan management"
+            websiteUrl="https://portal.surepaylg.com/"
             githubUrl=""
             listItems={[
               "Designed software and hardware architecture for project consisting of a PHP portal front end, NodeJS API back end, Redis server and PostgreSQL database server",
@@ -54,6 +57,21 @@ const ProjectList: React.FC = () => {
                 "Payment processing integration to multiple merchant gateways for ACH and CC transactions"
             ]}
           />
+            {/* Clicksite Builder Project */}
+            <ProjectItem
+                title="ClickSiteBuilder"
+                description="Business website creation and hosting service with ad campaign tracking"
+                websiteUrl="https://clicksitebuilder.com/"
+                githubUrl=""
+                listItems={[
+                    "Domain name availability searching and automated registration, configuration and name service activation",
+                    "Graphic image generation using text, color selection and script-fu, replacing the Roxen server previously used",
+                    "Complete redesign of the DB schema from MySQL to PostgreSQL with full foreign key enforcement, index optimization and triggers, as well as scripted migration process",
+                    "Custom written bulk mailer capable of using dynamically populated content for dual HTML and text emails at a rate of 1 million / 5 mins",
+                    "Turnkey ecommerce solution for store front and purchase transaction, all automatically created from a product Excel import",
+                    "Email ad campaigns with full tracking and reporting, and list management and generation tools"
+                ]}
+            />
 
         </div>
       </div>

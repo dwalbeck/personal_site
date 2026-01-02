@@ -26,7 +26,7 @@ jobs:
         run: npm run build
 
       - name: copy files to web server
-        uses: horochx/deploy-via-scp@master
+        uses: mdallasanta/ssh-scp-deploy@1.2.0
         with:
           host: 54.237.75.43
           user: deploy

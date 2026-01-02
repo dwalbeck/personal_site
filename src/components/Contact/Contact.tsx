@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import config from '../../config/env';
 
 interface FormData {
     firstName: string;
@@ -97,7 +98,7 @@ const Contact: React.FC = () => {
         setSubmitStatus(null);
 
         try {
-            const response = await fetch('/api/contact', {
+            const response = await fetch(`${config.apiUrl}/contact/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
