@@ -25,16 +25,21 @@ jobs:
       - name: compile the code
         run: npm run build
 
+      - name: write ssh key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/pri-key.pem
+          chmod 600 ~/.ssh/pri-key.pem
+
       - name: copy files to web server
-        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+        uses: reene444/scp-transfer-action@v1.0.0
         with:
-          host: "54.237.75.43"
-          user: "deploy"
-          key: ${{secrets.SSH_PRIVATE_KEY}}
-          port: "22"
-          scp: |
-            './dist/*' => /var/www/personal_site/
+          remote_host: "54.237.75.43"
+          remote_user: "deploy"
+          ssh-key-path: "~/.ssh/pri-key.pem"
+#          key: ${{secrets.SSH_PRIVATE_KEY}}
+#          port: "22"
 #          source: "./dist/*"
-#          target: "/var/www/personal_site/"
+          remote_path: "/var/www/personal_site/"
 
 
