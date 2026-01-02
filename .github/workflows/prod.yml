@@ -26,11 +26,11 @@ jobs:
         run: npm run build
 
       - name: copy files to web server
-        uses: mdallasanta/ssh-scp-deploy
+        uses: TwanLuttik/gh-action-scp@v1
         with:
           host: 54.237.75.43
-          user: deploy
-          key: ${{secrets.SSH_PRIVATE_KEY}}
+          username: deploy
+          privateKey: ${{secrets.SSH_PRIVATE_KEY}}
           port: 22
           local: './dist/*'
           remote: '/var/www/personal_site/'
