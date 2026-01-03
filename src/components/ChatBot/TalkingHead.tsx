@@ -11,9 +11,9 @@ const TalkingHead: React.FC<TalkingHeadProps> = ({ isAnimating, duration = 0 }) 
   const animationRef = useRef<NodeJS.Timeout | null>(null);
   const startTimeRef = useRef<number>(0);
 
-  const getRandomInterval = () => 200 + Math.random() * 300; // 200-500ms between movements (very visible)
-  const getRandomSpeed = () => 200 + Math.random() * 200; // 200-400ms for transition (very slow and visible)
-  const MAX_JAW_MOVEMENT = 14;
+  const getRandomInterval = () => 50 + Math.random() * 50; // 50-100ms between movements
+  const getRandomSpeed = () => 100 + Math.random() * 100; // 100-200ms for transition
+  const MAX_JAW_MOVEMENT = 9;
 
   const animateJaw = (isOpen: boolean) => {
     const currentTime = Date.now();
