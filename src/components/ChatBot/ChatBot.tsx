@@ -9,6 +9,7 @@ const ChatBot: React.FC = () => {
   const [chatLog, setChatLog] = useState<{ sender: string, text: string }[]>([]);
   const [loading, setLoading] = useState(false);
   const [isTalking, setIsTalking] = useState(false);
+  const [talkingDuration, setTalkingDuration] = useState(0);
   const chatLogRef = useRef<HTMLDivElement>(null);
 
   const toggleChat = () => {
@@ -40,15 +41,18 @@ const ChatBot: React.FC = () => {
       if (response.data.response) {
         setChatLog((prevLog) => [...prevLog, { sender: 'Bot', text: response.data.response }]);
 
-        const talkingDuration = Math.min(response.data.response.length * 50, 5000);
+        const duration = response.data.response.length * 50;
+        setTalkingDuration(duration);
         setIsTalking(true);
-        setTimeout(() => setIsTalking(false), talkingDuration);
+        setTimeout(() => setIsTalking(false), duration);
       }
     } catch (error) {
       setChatLog((prevLog) => [...prevLog, { sender: 'Bot', text: 'Something went wrong. Please try again later.' }]);
 
+      const duration = 2000;
+      setTalkingDuration(duration);
       setIsTalking(true);
-      setTimeout(() => setIsTalking(false), 2000);
+      setTimeout(() => setIsTalking(false), duration);
     }
 
     setMessage('');
@@ -73,7 +77,7 @@ const ChatBot: React.FC = () => {
       {/* Chat Box */}
       {isOpen && (
         <div className="fixed bottom-20 right-4 w-11/12 max-w-lg bg-white rounded-xl shadow-2xl flex flex-col p-4 border border-gray-300 md:max-w-xl lg:max-w-2xl z-50 overflow-visible">
-          <TalkingHead isAnimating={isTalking} duration={5000} />
+          <TalkingHead isAnimating={isTalking} duration={talkingDuration} />
 
           {/* Chat Log */}
           <div ref={chatLogRef} className="flex-1 overflow-y-auto mb-4 space-y-4 max-h-[60vh] pr-4">

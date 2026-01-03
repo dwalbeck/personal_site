@@ -7,36 +7,44 @@ interface TalkingHeadProps {
 
 const TalkingHead: React.FC<TalkingHeadProps> = ({ isAnimating, duration = 0 }) => {
   const [jawPosition, setJawPosition] = useState(0);
+  const [transitionSpeed, setTransitionSpeed] = useState(300);
   const animationRef = useRef<NodeJS.Timeout | null>(null);
   const startTimeRef = useRef<number>(0);
 
-  const getRandomInterval = () => Math.random() * 400;
-  const getRandomSpeed = () => Math.random() * 100;
-  const MAX_JAW_MOVEMENT = 35;
+  const getRandomInterval = () => 200 + Math.random() * 300; // 200-500ms between movements (very visible)
+  const getRandomSpeed = () => 200 + Math.random() * 200; // 200-400ms for transition (very slow and visible)
+  const MAX_JAW_MOVEMENT = 14;
 
-  const animateJaw = () => {
+  const animateJaw = (isOpen: boolean) => {
     const currentTime = Date.now();
 
+    // Check if animation duration has expired
     if (duration > 0 && currentTime - startTimeRef.current >= duration) {
       setJawPosition(0);
+      if (animationRef.current) {
+        clearTimeout(animationRef.current);
+      }
       return;
     }
 
-    const targetPosition = jawPosition === 0 ? MAX_JAW_MOVEMENT : 0;
+    // Set the new position
+    const targetPosition = isOpen ? MAX_JAW_MOVEMENT : 0;
     const speed = getRandomSpeed();
 
+    setTransitionSpeed(speed);
     setJawPosition(targetPosition);
 
-    animationRef.current = setTimeout(() => {
-      const nextInterval = getRandomInterval();
-      animationRef.current = setTimeout(animateJaw, nextInterval);
-    }, speed);
+    // Schedule next movement after transition completes + random pause
+    const nextInterval = getRandomInterval();
+    animationRef.current = setTimeout(() => animateJaw(!isOpen), speed + nextInterval);
   };
 
   useEffect(() => {
     if (isAnimating) {
       startTimeRef.current = Date.now();
-      animateJaw();
+      setJawPosition(0);
+      // Start the animation after a brief delay
+      animationRef.current = setTimeout(() => animateJaw(false), 100);
     } else {
       if (animationRef.current) {
         clearTimeout(animationRef.current);
@@ -63,11 +71,11 @@ const TalkingHead: React.FC<TalkingHeadProps> = ({ isAnimating, duration = 0 }) 
         <img
           src="/head-2.png"
           alt="Jaw"
-          className="absolute top-0 left-0 w-full h-full object-contain transition-transform"
+          className="absolute top-0 left-0 w-full h-full object-contain"
           style={{
             zIndex: 2,
             transform: `translateY(${jawPosition}px)`,
-            transitionDuration: `${getRandomSpeed()}ms`,
+            transition: `transform ${transitionSpeed}ms linear`,
           }}
         />
       </div>
