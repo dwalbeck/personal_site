@@ -10,11 +10,34 @@ const ChatBot: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [isTalking, setIsTalking] = useState(false);
   const [talkingDuration, setTalkingDuration] = useState(0);
+  const [showPromptText, setShowPromptText] = useState(true);
   const chatLogRef = useRef<HTMLDivElement>(null);
+  const blinkIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const toggleChat = () => {
     setIsOpen(!isOpen);
   };
+
+  // Blinking text effect - only when chat is closed
+  useEffect(() => {
+    if (!isOpen) {
+      setShowPromptText(true);
+      blinkIntervalRef.current = setInterval(() => {
+        setShowPromptText((prev) => !prev);
+      }, 5000);
+    } else {
+      if (blinkIntervalRef.current) {
+        clearInterval(blinkIntervalRef.current);
+      }
+      setShowPromptText(false);
+    }
+
+    return () => {
+      if (blinkIntervalRef.current) {
+        clearInterval(blinkIntervalRef.current);
+      }
+    };
+  }, [isOpen]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMessage(e.target.value);
@@ -67,12 +90,22 @@ const ChatBot: React.FC = () => {
 
   return (
     <>
-      <button
-        onClick={toggleChat}
-        className="fixed bottom-4 right-4 bg-gray-500 text-white w-14 h-14 rounded-full shadow-md flex items-center justify-center hover:bg-gray-700 transition duration-300 ease-in-out focus:outline-none"
-      >
-        <i className="fas fa-comments text-2xl"></i>
-      </button>
+      <div className="fixed bottom-4 right-4 flex items-center gap-3">
+        {/* Blinking prompt text */}
+        {showPromptText && (
+          <div className="text-purple-600 font-bold text-lg leading-tight text-right">
+            Ask me<br />Anything
+          </div>
+        )}
+
+        {/* Chat button with image */}
+        <button
+          onClick={toggleChat}
+          className="shadow-lg hover:scale-110 transition-transform duration-300 ease-in-out focus:outline-none"
+        >
+          <img src="/chat.png" alt="Chat" className="w-20 h-20" />
+        </button>
+      </div>
 
       {/* Chat Box */}
       {isOpen && (
@@ -107,7 +140,7 @@ const ChatBot: React.FC = () => {
               value={message}
               onChange={handleInputChange}
               onKeyUp={handleKeyPress}
-              placeholder="Ask me anything..."
+              placeholder="Ready to answer your questions..."
             ></textarea>
             <button
               onClick={sendMessage}

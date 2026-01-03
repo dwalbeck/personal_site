@@ -12,7 +12,7 @@ const TalkingHead: React.FC<TalkingHeadProps> = ({ isAnimating, duration = 0 }) 
   const startTimeRef = useRef<number>(0);
 
   const getRandomInterval = () => 50 + Math.random() * 50; // 50-100ms between movements
-  const getRandomSpeed = () => 100 + Math.random() * 100; // 100-200ms for transition
+  const getRandomSpeed = () => 30 + Math.random() * 120; // 30-150ms for transition
   const MAX_JAW_MOVEMENT = 9;
 
   const animateJaw = (isOpen: boolean) => {
