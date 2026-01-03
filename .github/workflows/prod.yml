@@ -18,17 +18,21 @@ jobs:
       - name: install node modules
         run: npm install
 
-      - name: Make envfile
-        uses: aasmal97/create-env-file@v3.1.2
-        with:
-          APP_SECRETS: ${{toJson(secrets)}}
-          ENV_FILE_NAME: ".env"
-          DESTINATION_PATH: ${{ github.workspace }}/src
+#      - name: Make envfile
+#        uses: aasmal97/create-env-file@v3.1.2
+#        with:
+#          APP_SECRETS: ${{toJson(secrets)}}
+#          ENV_FILE_NAME: ".env"
+#          DESTINATION_PATH: ${{ github.workspace }}/src
+
+      - name: create env file
+        run: |
+          echo "${{ secrets.ENV_FILE }}" > .env
 
       - name: compile the code
         run: npm run build
 
-      - name: move files to backup
+      - name: backup current code
         uses: fifsky/ssh-action@master
         with:
           command: |
@@ -49,4 +53,7 @@ jobs:
           source: "./dist/*"
           target: "/var/www/personal_site/"
 
+      - name: show env
+        run: |
+          cat .env
 
