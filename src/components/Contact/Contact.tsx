@@ -244,7 +244,7 @@ const Contact: React.FC = () => {
                     </div>
 
                     {/* Contact Info */}
-                    <div className="lg:w-1/3 text-white space-y-6">
+                    <div className="lg:w-1/4 text-white space-y-6">
                         <div>
                             <h2 className="text-3xl font-bold mb-2">Davey Walbeck</h2>
                             <p className="text-xl font-light">Senior Software Architect</p>
