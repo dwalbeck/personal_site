@@ -12,7 +12,7 @@ const Landing: React.FC = () => {
           {/* Profile Section */}
           <div className="w-full md:w-1/3 lg:w-1/4 flex-shrink-0 text-center profile-section mb-10 sm:mb-0 mr-4">
             <img src="/headshot.jpg" alt="Davey Walbeck" className="w-64 h-94 object-cover mx-auto" />
-            <h1 className="mt-2 text-3xl font-light">Davey Walbeck</h1>
+            <h1 className="mt-2 text-3xl font-bold text-purple-800">Davey Walbeck</h1>
             <p className="text-gray-500 text-lg font-light">
               Senior Software Engineer / Software Architect
               <br />
