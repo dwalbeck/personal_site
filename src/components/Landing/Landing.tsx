@@ -19,17 +19,20 @@ const Landing: React.FC = () => {
               Draper, UT
             </p>
             <div className="mt-4">
-              <a href={config.social.github} alt="GitHub" className="text-2xl mx-2 text-gray-600 hover:text-gray-600">
-                <i className="fab fa-github hover:scale-110"></i>
+              <a href={config.social.github} target="_blank" className="text-2xl mx-2 text-gray-600 hover:text-gray-600">
+                  <img src="/github.png" width="38" height="38" alt="GitHub" />
               </a>
-              <a href={config.social.linkedin} alt="LinkedIn" className="text-2xl mx-2 text-gray-600 hover:text-gray-600">
-                <i className="fab fa-linkedin hover:scale-110"></i>
+              <a href={config.social.linkedin} target="_blank" className="text-2xl mx-2 text-gray-600 hover:text-gray-600">
+                  <img src="/linkedin.png" width="38" height="38" alt="LinkedIn" />
               </a>
-              <a href={config.files.resume} target="_blank" rel="noopener noreferrer" alt="Resume" className="text-2xl mx-2 text-gray-600 hover:text-gray-600">
-                <i className="ai ai-cv hover:scale-110"></i>
+              <a href={config.files.resume} target="_blank" rel="noopener noreferrer" className="text-2xl mx-2 text-gray-600 hover:text-gray-600">
+                  <img src="/cv.png" width="38" height="38" alt="Rsume" />
               </a>
-              <a href="mailto:{config.contact.email}" target="_blank" rel="noopener noreferrer" alt="Email" className="text-2xl mx-2 text-gray-600 hover:text-gray-600">
-                <i className="fas fa-envelope hover:scale-110"></i>
+              <a href="mailto:{config.contact.email}" target="_blank" rel="noopener noreferrer" className="text-2xl mx-2 text-gray-600 hover:text-gray-600">
+                  <img src="/email.png" alt="Email" width="38" height="38" />
+              </a>
+              <a href="/davey_walbeck-executive_bio.pdf" target="_blank" rel="noopener noreferrer" className="text-2xl mx-2 text-gray-600 hover:text-gray-600">
+                  <img src="/report.png" alt="Executive Bio Report" width="38" height="38" />
               </a>
             </div>
           </div>
