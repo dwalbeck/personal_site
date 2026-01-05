@@ -18,7 +18,7 @@ const Landing: React.FC = () => {
               <br />
               Draper, UT
             </p>
-            <div className="mt-4">
+            <div className="mt-4 flex flex-row gap-2">
               <a href={config.social.github} target="_blank" className="text-2xl mx-2 text-gray-600 hover:text-gray-600">
                   <img src="/github.png" width="38" height="38" alt="GitHub" />
               </a>
