@@ -49,8 +49,8 @@ const Landing: React.FC = () => {
                 messy challenges and will work until the code runs right.</p>
 
             {/* Sections for Education and Accomplishments */}
-            <div className="flex flex-wrap mt-8 space-y-8 md:space-y-0 text-center">
-                <img src="/my_skills_cloud.png" width="400" className="aspect-91/40 mt-14 self-center" />
+            <div className="flex flex-wrap mt-8 space-y-8 md:space-y-0 justify-center">
+                <img src="/my_skills_cloud.png" width="460" className="aspect-91/40 mt-14 self-center" />
             </div>
           </div>
         </div>
