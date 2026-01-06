@@ -50,37 +50,7 @@ const Landing: React.FC = () => {
 
             {/* Sections for Education and Accomplishments */}
             <div className="flex flex-wrap mt-8 space-y-8 md:space-y-0">
-              {/* Education Section */}
-              <div className="w-full md:w-1/2 pr-5 mb-4">
-                <h3 className="text-lg md:text-xl font-light">Education</h3>
-                <hr className="my-2" />
-                <ul className="list-none mt-2 space-y-2">
-                  <li className="text-xs md:text-sm">
-                    <i className="fas fa-graduation-cap text-gray-600"></i> Psychology, 1991 - 1993
-                    <p className="text-xs md:text-sm text-gray-600 pl-7 font-light">Salt Lake Community College</p>
-                    <p className="text-xs md:text-sm text-gray-600 pl-7 font-light">GPA: 3.9</p>
-                  </li>
-                  <li className="text-xs md:text-sm">
-                    <i className="fas fa-graduation-cap text-gray-600"></i> Architectural Design and Drafting, 1995 - 1997
-                    <p className="text-xs md:text-sm text-gray-600 pl-7 font-light">Sevier Valley Applied Technical College, UT</p>
-                    <p className="text-xs md:text-sm text-gray-600 pl-7 font-light">GPA: 4.0</p>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Accomplishments Section */}
-              <div className="w-full md:w-1/2 pr-5 mb-4">
-                <h3 className="text-lg md:text-xl font-light">Accomplishments</h3>
-                <hr className="my-2" />
-                <ul className="list-none mt-2 space-y-2">
-                  <li className="text-xs md:text-sm">
-                    <i className="fas fa-trophy text-gray-600"></i> AWS Certified Cloud Architect (2021)
-                  </li>
-                  <li className="text-xs md:text-sm">
-                    <i className="fas fa-trophy text-gray-600"></i> Google Cloud Provider - Developer Cerfication (2024)
-                  </li>
-                </ul>
-              </div>
+                <img src="/my_skills_cloud.png" className="aspect-91/40 w-600 mt-14" />
             </div>
           </div>
         </div>
