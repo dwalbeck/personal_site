@@ -72,7 +72,21 @@ const ProjectList: React.FC = () => {
                     "Email ad campaigns with full tracking and reporting, and list management and generation tools"
                 ]}
             />
-
+            {/* Offerweb Project */}
+            <ProjectItem
+                title="Offerweb"
+                description="Affiliate merchant tracking system for ads and campaigns"
+                websiteUrl="https://offerweb.com/"
+                githubUrl=""
+                listItems={[
+                    "Unlimited customizable payouts across a range of target, scope and calculation metric, dynamic scaling options",
+                    "Payout histories by date, merchant, revenue or site, all searchable and containing the full transaction chain",
+                    "Fully customizable commissions, incentive and reward system with unlimited definitions",
+                    "Suppression lists enforcable by email, domain or mac address",
+                    "Live real-time statistics for revenue earned from campaigns and affiliates",
+                    "Affiliate and sub-affiliate tracking for networks with full downloadable reports"
+                ]}
+            />
         </div>
       </div>
     </div>
