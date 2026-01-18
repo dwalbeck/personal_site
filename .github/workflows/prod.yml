@@ -39,6 +39,7 @@ jobs:
         uses: fifsky/ssh-action@master
         with:
           command: |
+            sudo /usr/bin/systemctl stop personal_api.service 
             cd /var/www/personal_site
             rm -rf ./backup
             mv ./dist ./backup
@@ -56,4 +57,12 @@ jobs:
           source: "./dist/*"
           target: "/var/www/personal_site/"
 
+      - name: start service
+        uses: fifsky/ssh-action@master
+        with:
+          command: |
+            sudo /usr/bin/systemctl start personal_api.service 
 
+          host: 54.236.27.213
+          user: deploy
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
